@@ -24,7 +24,7 @@ jobs:
 
       # استخدام Gradle 7.6.1 ليتوافق تماماً مع AGP 7.4.2
       - name: Generate Gradle Wrapper
-        run: gradle wrapper --gradle-version 7.6.1
+        run: gradle wrapper --gradle-version 8.10.2
 
       - name: Grant Execute Permission for Gradlew
         run: chmod +x gradlew
