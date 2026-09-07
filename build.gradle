@@ -4,15 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        // إصدار متوافق ومستقر لـ Android Gradle Plugin
         classpath 'com.android.tools.build:gradle:7.4.2'
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
     }
 }
 
