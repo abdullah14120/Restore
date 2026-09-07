@@ -1,4 +1,4 @@
-package com.what;
+package com.whatsapp;
 
 import android.app.Activity;
 import android.content.Intent;
