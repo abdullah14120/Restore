@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "RestoreZipApp"
-include ':app'
+rootProject.name = "Restore"
+include(":app")
