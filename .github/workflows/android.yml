@@ -1,0 +1,40 @@
+name: Build Whh APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-release:
+    name: Native Build & Assembly
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'gradle'
+
+      # استخدام Gradle 7.6.1 ليتوافق تماماً مع AGP 7.4.2
+      - name: Generate Gradle Wrapper
+        run: gradle wrapper --gradle-version 7.6.1
+
+      - name: Grant Execute Permission for Gradlew
+        run: chmod +x gradlew
+
+      - name: Build Release APK
+        run: ./gradlew assembleRelease --build-cache --parallel --no-daemon
+
+      - name: Upload APK Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: RestoreZipApp-Build-${{ github.run_number }}
+          path: app/build/outputs/apk/release/*.apk
+          retention-days: 5
